@@ -18,7 +18,10 @@ Clock.prototype.reduceMinutes = function() {
 }
 
 Clock.prototype.reduceHours = function() {
-  if(this.hours >= 24) {this.hours = this.hours % 24};
+  if(this.hours >= 24 || this.hours <= 24) {
+    this.hours = this.hours % 24
+  };
+  if(this.hours < 0) {this.hours = 24 + this.hours};
 }
 
 Clock.prototype.getTime = function() {

@@ -52,15 +52,15 @@ describe('Clock', function () {
       expect(at(-1, 15).toString()).toEqual('23:15');
     });
 
-    xit('negative hour rolls over', function () {
+    it('negative hour rolls over', function () {
       expect(at(-25, 0).toString()).toEqual('23:00');
     });
 
-    xit('negative hour rolls over continuously', function () {
+    it('negative hour rolls over continuously', function () {
       expect(at(-91, 0).toString()).toEqual('05:00');
     });
 
-    xit('negative minutes', function () {
+    it('negative minutes', function () {
       expect(at(1, -40).toString()).toEqual('00:20');
     });
 
