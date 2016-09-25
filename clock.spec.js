@@ -64,19 +64,19 @@ describe('Clock', function () {
       expect(at(1, -40).toString()).toEqual('00:20');
     });
 
-    xit('negative minutes rolls over', function () {
+    it('negative minutes rolls over', function () {
       expect(at(1, -160).toString()).toEqual('22:20');
     });
 
-    xit('negative minutes rolls over continuously', function () {
+    it('negative minutes rolls over continuously', function () {
       expect(at(1, -4820).toString()).toEqual('16:40');
     });
 
-    xit('negative hour and minutes both roll over', function () {
+    it('negative hour and minutes both roll over', function () {
       expect(at(-25, -160).toString()).toEqual('20:20');
     });
 
-    xit('negative hour and minutes both roll over continuously', function () {
+    it('negative hour and minutes both roll over continuously', function () {
       expect(at(-121, -5810).toString()).toEqual('22:10');
     });
 
