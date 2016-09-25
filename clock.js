@@ -5,18 +5,18 @@ var at = function(hours, minutes){
 };
 
 function Clock(hours, minutes) {
-  this.hours = rollOverHours((hours+minutesToHours(minutes)));
-  this.minutes = rollOverMinutes(minutes);
+  this.hours = TimeAdjuster.rollOverHours((hours+TimeAdjuster.minutesToHours(minutes)));
+  this.minutes = TimeAdjuster.rollOverMinutes(minutes);
 };
 
 Clock.prototype.plus = function(minutes) {
   this.minutes += minutes;
   if(this.minutes >= 60) {
-    this.hours += minutesToHours(this.minutes);
+    this.hours += TimeAdjuster.minutesToHours(this.minutes);
 
-    if(this.hours >= 24) {this.hours = rollOverHours(this.hours)};
+    if(this.hours >= 24) {this.hours = TimeAdjuster.rollOverHours(this.hours)};
 
-    this.minutes = rollOverMinutes(this.minutes);
+    this.minutes = TimeAdjuster.rollOverMinutes(this.minutes);
   }
   return this;
 };
@@ -24,11 +24,11 @@ Clock.prototype.plus = function(minutes) {
 Clock.prototype.minus = function(minutes) {
   this.minutes -= minutes;
   if(this.minutes < 0) {
-    this.hours += minutesToHours(this.minutes);
+    this.hours += TimeAdjuster.minutesToHours(this.minutes);
 
-    if(this.hours < 0) {this.hours = rollOverHours(this.hours)};
+    if(this.hours < 0) {this.hours = TimeAdjuster.rollOverHours(this.hours)};
 
-    this.minutes = rollOverMinutes(this.minutes);
+    this.minutes = TimeAdjuster.rollOverMinutes(this.minutes);
   }
   return this;
 };
@@ -49,26 +49,31 @@ Clock.prototype.minutesToString = function() {
   return this.minutes > 9 ? this.minutes.toString() : "0" + this.minutes;
 };
 
-// opted to pull these functions out of the Clock Object
-function minutesToHours(minutes) {
-  if(isNaN(minutes)) {return 0};
-  var hours = Math.floor(minutes / 60);
-  return hours;
-};
+// opted to pull these functions out of the Clock Object into a module
+var TimeAdjuster = (function() {
 
-function rollOverMinutes(minutes) {
-  if(isNaN(minutes)) {return 0};
-  var minutes = minutes % 60;
-  if(minutes < 0){minutes = 60 + minutes};
-  return minutes;
-};
+  return {
+    minutesToHours: function(minutes) {
+      if(isNaN(minutes)) {return 0};
+      var hours = Math.floor(minutes / 60);
+      return hours;
+    },
 
-function rollOverHours(hours) {
-  if(isNaN(hours)) {return 0};
-  var hours = hours % 24;
-  if(hours < 0) {hours = 24 + hours};
-  return hours;
-};
+    rollOverMinutes: function(minutes) {
+      if(isNaN(minutes)) {return 0};
+      var minutes = minutes % 60;
+      if(minutes < 0){minutes = 60 + minutes};
+      return minutes;
+    },
+
+    rollOverHours: function(hours) {
+      if(isNaN(hours)) {return 0};
+      var hours = hours % 24;
+      if(hours < 0) {hours = 24 + hours};
+      return hours;
+    }
+  }
+})();
 
 module.exports = at;
 
