@@ -1,6 +1,7 @@
+"use strict";
+
 var at = function(hours, minutes){
-  var clock = new Clock(hours, minutes);
-  return clock.getTime();
+  return new Clock(hours, minutes);
 };
 
 function Clock(hours, minutes) {
@@ -8,18 +9,24 @@ function Clock(hours, minutes) {
   this.minutes = rollOverMinutes(minutes);
 };
 
-Clock.prototype.getTime = function() {
-  return this.getHours() + ":" + this.getMinutes();
+Clock.prototype.plus = function(minutes) {
+  this.minutes += minutes;
+  return this;
 };
 
-Clock.prototype.getHours = function() {
+Clock.prototype.toString = function() {
+  return this.hoursToString() + ":" + this.minutesToString();
+};
+
+Clock.prototype.hoursToString = function() {
   return this.hours > 9 ? this.hours.toString() : "0" + this.hours;
 };
 
-Clock.prototype.getMinutes = function() {
+Clock.prototype.minutesToString = function() {
   return this.minutes > 9 ? this.minutes.toString() : "0" + this.minutes;
 };
 
+// opted to pull these functions out of the Clock Object
 function minutesToHours(minutes) {
   if(isNaN(minutes)) {return 0};
   var hours = Math.floor(minutes / 60);

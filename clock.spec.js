@@ -82,15 +82,15 @@ describe('Clock', function () {
 
     describe('Adding and subtracting minutes', function () {
 
-      xit('add minutes', function () {
+      it('add minutes', function () {
         expect(at(10, 0).plus(3).toString()).toEqual('10:03');
       });
 
-      xit('add no minutes', function () {
+      it('add no minutes', function () {
         expect(at(6, 41).plus(0).toString()).toEqual('06:41');
       });
 
-      xit('add to next hour', function () {
+      it('add to next hour', function () {
         expect(at(0, 45).plus(40).toString()).toEqual('01:25');
       });
 
