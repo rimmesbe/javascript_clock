@@ -16,39 +16,39 @@ describe('Clock', function () {
       expect(at(24, 0).toString()).toEqual('00:00');
     });
 
-    xit('hour rolls over', function () {
+    it('hour rolls over', function () {
       expect(at(25, 0).toString()).toEqual('01:00');
     });
 
-    xit('hour rolls over continuously', function () {
+    it('hour rolls over continuously', function () {
       expect(at(100, 0).toString()).toEqual('04:00');
     });
 
-    xit('sixty minutes is next hour', function () {
+    it('sixty minutes is next hour', function () {
       expect(at(1, 60).toString()).toEqual('02:00');
     });
 
-    xit('minutes roll over', function () {
+    it('minutes roll over', function () {
       expect(at(0, 160).toString()).toEqual('02:40');
     });
 
-    xit('minutes roll over continuously', function () {
+    it('minutes roll over continuously', function () {
       expect(at(0, 1723).toString()).toEqual('04:43');
     });
 
-    xit('hour and minutes roll over', function () {
+    it('hour and minutes roll over', function () {
       expect(at(25, 160).toString()).toEqual('03:40');
     });
 
-    xit('hour and minutes roll over continuously', function () {
+    it('hour and minutes roll over continuously', function () {
       expect(at(201, 3001).toString()).toEqual('11:01');
     });
 
-    xit('hour and minutes roll over to exactly midnight', function () {
+    it('hour and minutes roll over to exactly midnight', function () {
       expect(at(72, 8640).toString()).toEqual('00:00');
     });
 
-    xit('negative hour', function () {
+    it('negative hour', function () {
       expect(at(-1, 15).toString()).toEqual('23:15');
     });
 
