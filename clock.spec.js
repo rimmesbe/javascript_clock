@@ -8,11 +8,11 @@ describe('Clock', function () {
       expect(at(8).toString()).toEqual('08:00');
     });
 
-    xit('past the hour', function () {
+    it('past the hour', function () {
       expect(at(11, 9).toString()).toEqual('11:09');
     });
 
-    xit('midnight is zero hours', function () {
+    it('midnight is zero hours', function () {
       expect(at(24, 0).toString()).toEqual('00:00');
     });
 
@@ -150,7 +150,7 @@ describe('Clock', function () {
 
     describe('Construct two separate clocks, set times, test if they are equal', function () {
 
-      it('clocks with same time', function () {
+      xit('clocks with same time', function () {
         expect(at(15, 37).equals(at(15, 37))).toBeTruthy();
       });
 

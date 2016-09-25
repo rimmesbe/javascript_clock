@@ -13,6 +13,7 @@ Clock.prototype.getTime = function() {
 }
 
 Clock.prototype.getHours = function() {
+  if(this.hours>=24) {this.hours = this.hours%24};
   return this.hours > 9 ? this.hours.toString() : "0" + this.hours;
 }
 
