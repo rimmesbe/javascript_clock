@@ -94,23 +94,23 @@ describe('Clock', function () {
         expect(at(0, 45).plus(40).toString()).toEqual('01:25');
       });
 
-      xit('add more than one hour', function () {
+      it('add more than one hour', function () {
         expect(at(10, 0).plus(61).toString()).toEqual('11:01');
       });
 
-      xit('add more than two hours with carry', function () {
+      it('add more than two hours with carry', function () {
         expect(at(0, 45).plus(160).toString()).toEqual('03:25');
       });
 
-      xit('add across midnight', function () {
+      it('add across midnight', function () {
         expect(at(23, 59).plus(2).toString()).toEqual('00:01');
       });
 
-      xit('add more than one day (1500 min = 25 hrs)', function () {
+      it('add more than one day (1500 min = 25 hrs)', function () {
         expect(at(5, 32).plus(1500).toString()).toEqual('06:32');
       });
 
-      xit('add more than two days', function () {
+      it('add more than two days', function () {
         expect(at(1, 1).plus(3500).toString()).toEqual('11:21');
       });
 

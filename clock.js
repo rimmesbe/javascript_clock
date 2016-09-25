@@ -11,6 +11,13 @@ function Clock(hours, minutes) {
 
 Clock.prototype.plus = function(minutes) {
   this.minutes += minutes;
+  if(this.minutes >= 60) {
+    this.hours += minutesToHours(this.minutes);
+
+    if(this.hours >= 24) {this.hours = rollOverHours(this.hours)};
+
+    this.minutes = rollOverMinutes(this.minutes);
+  }
   return this;
 };
 
