@@ -33,6 +33,10 @@ Clock.prototype.minus = function(minutes) {
   return this;
 };
 
+Clock.prototype.equals = function(clock) {
+  return (this.minutes === clock.minutes && this.hours === clock.hours);
+};
+
 Clock.prototype.toString = function() {
   return this.hoursToString() + ":" + this.minutesToString();
 };
