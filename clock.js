@@ -21,6 +21,18 @@ Clock.prototype.plus = function(minutes) {
   return this;
 };
 
+Clock.prototype.minus = function(minutes) {
+  this.minutes -= minutes;
+  if(this.minutes < 0) {
+    this.hours += minutesToHours(this.minutes);
+
+    if(this.hours < 0) {this.hours = rollOverHours(this.hours)};
+
+    this.minutes = rollOverMinutes(this.minutes);
+  }
+  return this;
+};
+
 Clock.prototype.toString = function() {
   return this.hoursToString() + ":" + this.minutesToString();
 };

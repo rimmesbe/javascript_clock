@@ -114,35 +114,35 @@ describe('Clock', function () {
         expect(at(1, 1).plus(3500).toString()).toEqual('11:21');
       });
 
-      xit('subtract minutes', function () {
+      it('subtract minutes', function () {
         expect(at(10, 3).minus(3).toString()).toEqual('10:00');
       });
 
-      xit('subtract to previous hour', function () {
+      it('subtract to previous hour', function () {
         expect(at(10, 3).minus(30).toString()).toEqual('09:33');
       });
 
-      xit('subtract more than an hour', function () {
+      it('subtract more than an hour', function () {
         expect(at(10, 3).minus(70).toString()).toEqual('08:53');
       });
 
-      xit('subtract across midnight', function () {
+      it('subtract across midnight', function () {
         expect(at(0, 3).minus(4).toString()).toEqual('23:59');
       });
 
-      xit('subtract more than two hours', function () {
+      it('subtract more than two hours', function () {
         expect(at(0, 0).minus(160).toString()).toEqual('21:20');
       });
 
-      xit('subtract more than two hours with borrow', function () {
+      it('subtract more than two hours with borrow', function () {
         expect(at(6, 15).minus(160).toString()).toEqual('03:35');
       });
 
-      xit('subtract more than one day (1500 min = 25 hrs)', function () {
+      it('subtract more than one day (1500 min = 25 hrs)', function () {
         expect(at(5, 32).minus(1500).toString()).toEqual('04:32');
       });
 
-      xit('subtract more than two days', function () {
+      it('subtract more than two days', function () {
         expect(at(2, 20).minus(3000).toString()).toEqual('00:20');
       });
 
